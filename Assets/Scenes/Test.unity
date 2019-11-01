@@ -1865,6 +1865,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 1495409208}
+  - component: {fileID: 1495409212}
   - component: {fileID: 1495409211}
   - component: {fileID: 1495409210}
   - component: {fileID: 1495409209}
@@ -1960,6 +1961,17 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.ScrollRect+ScrollRectEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &1495409212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1495409207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9159736f1cb475d41af0d2f7f7b37779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1535919082
 GameObject:
   m_ObjectHideFlags: 0
