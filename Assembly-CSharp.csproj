@@ -51,6 +51,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\ScrollView\SlideUnitForScrollView.cs" />
      <Compile Include="Assets\Scripts\Test\DOTweenTest.cs" />
      <Compile Include="Assets\Scripts\Test\ScrollViewTest.cs" />
      <None Include="Assets\DOTween\DOTween46.xml" />

@@ -432,6 +432,7 @@ GameObject:
   - component: {fileID: 114945015612473296}
   - component: {fileID: 222864477772850758}
   - component: {fileID: 114435258457908730}
+  - component: {fileID: 114050456034651582}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -594,6 +595,18 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114050456034651582
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1918301659139866}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d545700cb7ec1469d9fd2e7b82fbfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetLimit: 0
 --- !u!114 &114068185023852426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1409,7 +1422,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 224543189606021780}
   m_Direction: 0
   m_Value: 0
-  m_Size: 0.28135106
+  m_Size: 0.3031359
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2010,7 +2023,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 2000, y: 0}
+  m_SizeDelta: {x: 1800, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!224 &224792259823090946
 RectTransform:
