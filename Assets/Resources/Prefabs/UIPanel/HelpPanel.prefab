@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 114264252395369758}
   - component: {fileID: 222870647693780184}
   - component: {fileID: 114437830143602438}
+  - component: {fileID: 114547658724384430}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -817,6 +818,7 @@ GameObject:
   - component: {fileID: 114967918220528138}
   - component: {fileID: 222516187487973226}
   - component: {fileID: 114934294556721468}
+  - component: {fileID: 114786929271577204}
   m_Layer: 5
   m_Name: Scroll View
   m_TagString: Untagged
@@ -2639,6 +2641,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114547658724384430
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412376899290922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d545700cb7ec1469d9fd2e7b82fbfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetLimit: 0
 --- !u!114 &114552136576742128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3079,6 +3093,18 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &114786929271577204
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1587248749681446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0d545700cb7ec1469d9fd2e7b82fbfb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offsetLimit: 0
 --- !u!114 &114797950708404114
 MonoBehaviour:
   m_ObjectHideFlags: 1
