@@ -51,9 +51,41 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Scripts\ScrollView\SlideUnitForScrollView.cs" />
+     <Compile Include="Assets\Scripts\Factory\AudioClipFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\BaseFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\FactoryType.cs" />
+     <Compile Include="Assets\Scripts\Factory\GameFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\IBaseFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\IBaseResourcesFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\RuntimeAnimatorControllerFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\SpriteFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\UIFactory.cs" />
+     <Compile Include="Assets\Scripts\Factory\UIPanelFactory.cs" />
+     <Compile Include="Assets\Scripts\Manager\MonoBeheaviourManager\GameController.cs" />
+     <Compile Include="Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\NormalManager\AudioSourceManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\NormalManager\FactoryManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\NormalManager\Memento.cs" />
+     <Compile Include="Assets\Scripts\Manager\NormalManager\PlayerManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\NormalManager\StringManager.cs" />
+     <Compile Include="Assets\Scripts\Manager\NormalManager\UIManager.cs" />
+     <Compile Include="Assets\Scripts\Scene\BaseSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\BossModelSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\GameBossOptionSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\GameNormalOptionSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\IBaseSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\MainSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\MonsterNestSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\NormalModelSceneState.cs" />
+     <Compile Include="Assets\Scripts\Scene\StartLoadSceneState.cs" />
      <Compile Include="Assets\Scripts\Test\DOTweenTest.cs" />
+     <Compile Include="Assets\Scripts\Test\DPState.cs" />
+     <Compile Include="Assets\Scripts\Test\IOP.cs" />
+     <Compile Include="Assets\Scripts\Test\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\Test\ScrollViewTest.cs" />
+     <Compile Include="Assets\Scripts\Test\Singleton.cs" />
+     <Compile Include="Assets\Scripts\Test\TestManager.cs" />
+     <Compile Include="Assets\Scripts\UI\UI\ScrollView\SlideUnitForScrollView.cs" />
      <None Include="Assets\DOTween\DOTween46.xml" />
      <None Include="Assets\DOTween\DOTween43.xml" />
      <None Include="Assets\DOTween\readme.txt" />
