@@ -79,6 +79,8 @@
      <Compile Include="Assets\Scripts\Scene\NormalModelSceneState.cs" />
      <Compile Include="Assets\Scripts\Scene\StartLoadSceneState.cs" />
      <Compile Include="Assets\Scripts\Test\DOTweenTest.cs" />
+     <Compile Include="Assets\Scripts\Test\DPFacade.cs" />
+     <Compile Include="Assets\Scripts\Test\DPMediator.cs" />
      <Compile Include="Assets\Scripts\Test\DPState.cs" />
      <Compile Include="Assets\Scripts\Test\IOP.cs" />
      <Compile Include="Assets\Scripts\Test\ObjectPool.cs" />
@@ -86,6 +88,7 @@
      <Compile Include="Assets\Scripts\Test\Singleton.cs" />
      <Compile Include="Assets\Scripts\Test\TestManager.cs" />
      <Compile Include="Assets\Scripts\UI\UI\ScrollView\SlideUnitForScrollView.cs" />
+     <Compile Include="Assets\Scripts\UI\UIFacade.cs" />
      <None Include="Assets\DOTween\DOTween46.xml" />
      <None Include="Assets\DOTween\DOTween43.xml" />
      <None Include="Assets\DOTween\readme.txt" />
