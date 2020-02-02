@@ -24,13 +24,12 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
     private int currentItemIndex; // 当前单元格索引 
 
     public float offsetLimit; // 用来改变拖动触发的距离，即灵敏度，默认为0
-    
-	
+    public Text pageText;
     
     private void Awake() {
-        init();
+        Init();
     }
-	private void init()
+	private void Init()
     {
         scrollRect = GetComponent<ScrollRect>();
         content = scrollRect.content;
@@ -47,6 +46,21 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
         currentItemIndex = 1; // 设置当前单元索引为1
         lastProportion = 0;
         scrollRect.horizontalNormalizedPosition = 0; // 设置初始比例为 0 
+    }
+    public void ResetScrollView()
+    {
+        if(content!=null)
+        {
+            // content不为null表明不是第一次调用该脚本，因此调用重置方法
+            currentItemIndex = 1; // 设置当前单元索引为1
+            lastProportion = 0;
+            scrollRect.horizontalNormalizedPosition = 0; // 设置初始比例为 0
+            if(pageText != null)
+            {
+                pageText.text = currentItemIndex + "/" + totalItemNum;
+            } 
+        }
+         
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -87,6 +101,11 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
             //scrollRect.horizontalNormalizedPosition = lastProportion;
             DOTween.To(()=>scrollRect.horizontalNormalizedPosition,lerpValue=>scrollRect.horizontalNormalizedPosition = lerpValue,
                         lastProportion,0.5f).SetEase(Ease.OutQuint);
+        }
+        // 更新页面
+        if(pageText != null)
+        {
+            pageText.text = currentItemIndex + "/" + totalItemNum;
         }
     }
 

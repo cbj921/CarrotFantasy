@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameBossOptionSceneState : BaseSceneState {
-
-
+public class GameBossOptionSceneState : BaseSceneState
+{
+    public GameBossOptionSceneState(UIFacade uiFacade) : base(uiFacade)
+    {
+    }
 }

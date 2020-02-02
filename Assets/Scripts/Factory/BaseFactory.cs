@@ -26,6 +26,7 @@ public class BaseFactory : IBaseFactory
     public GameObject GetItem(string itemName)
     {
         GameObject itemGo = null;
+		
 		if(objectPoolDict.ContainsKey(itemName))
 		{
 			// 检查对象池中是否还有元素

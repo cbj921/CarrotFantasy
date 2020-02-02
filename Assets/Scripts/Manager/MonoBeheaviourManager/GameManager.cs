@@ -1,8 +1,8 @@
 ﻿/*
  * @Author: your name
  * @Date: 2019-12-05 16:03:23
- * @LastEditTime: 2019-12-08 20:18:37
- * @LastEditors: Please set LastEditors
+ * @LastEditTime : 2020-01-23 18:13:15
+ * @LastEditors  : Please set LastEditors
  * @Description: 该脚本是游戏负责全局控制的脚本
  * @FilePath: \CarrotFantasy\Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs
  */
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour {
 		factoryManager = new FactoryManager();
 		audioSourceManager = new AudioSourceManager();
 		uiManager = new UIManager();
-		//
+		uiManager.mUIFacade.currentSceneState.EnterScene();
 	}
 
 	// 因为在工厂的脚本中，没有继承MonoBehaviour,所以无法使用Instantiate来实例化
@@ -40,7 +40,33 @@ public class GameManager : MonoBehaviour {
 	public GameObject CreatItem(GameObject item)
 	{
 		GameObject itemGo = Instantiate(item);
-		return item;
+		return itemGo;
+	}
+
+	// 获取 Sprite 资源
+	public Sprite GetSprite(string resourcePath)
+	{
+		return factoryManager.spriteFactory.GetSingleResources(resourcePath);
+	}
+	// 获取 audioClip 资源
+	public AudioClip GetAudioClip(string resourcePath)
+	{
+		return factoryManager.audioClipFactory.GetSingleResources(resourcePath);
+	}
+	// 获取 runtimeAnimatorController 资源
+	public RuntimeAnimatorController GetRunTimeAnimatorController(string resourcePath)
+	{
+		return factoryManager.runtimeAnimatorController.GetSingleResources(resourcePath);
+	}
+	// 获取游戏物体
+	public GameObject GetGameObjectResource(FactoryType factoryType,string resourcePath)
+	{
+		return factoryManager.factoryDict[factoryType].GetItem(resourcePath);
+	}
+	// 将游戏物体放回工厂对象池
+	public void PushGameObjectToFactory(FactoryType factoryType,string resourcePath,GameObject itemGo)
+	{
+		factoryManager.factoryDict[factoryType].PushItem(resourcePath,itemGo);
 	}
 
 }

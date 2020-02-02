@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class BaseSceneState : IBaseSceneState
 {
-    public void EnterScene()
+    protected UIFacade mUIFacade;
+    public BaseSceneState(UIFacade uiFacade)
     {
-        throw new System.NotImplementedException();
+        mUIFacade = uiFacade;
+    }
+    public virtual void EnterScene()
+    {
+        mUIFacade.InitAllPanelDict();
     }
 
-    public void ExitScene()
+    public virtual void ExitScene()
     {
-        throw new System.NotImplementedException();
+        mUIFacade.ClearUIDict();
     }
 }
