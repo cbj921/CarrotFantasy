@@ -1,7 +1,7 @@
 ﻿/*
  * @Author: your name
  * @Date: 2019-12-05 16:03:23
- * @LastEditTime : 2020-01-23 18:13:15
+ * @LastEditTime : 2020-02-05 22:47:30
  * @LastEditors  : Please set LastEditors
  * @Description: 该脚本是游戏负责全局控制的脚本
  * @FilePath: \CarrotFantasy\Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs
@@ -23,6 +23,8 @@ public class GameManager : MonoBehaviour {
 			return _instance;
 		}
 	}
+
+	public Stage currentStage; // 当前选择小关卡的stage
 
 	private void Awake() {
 		DontDestroyOnLoad(this.gameObject); // 该api表示该节点不会随着初始化而销毁，我们要让GameManager贯穿整个游戏

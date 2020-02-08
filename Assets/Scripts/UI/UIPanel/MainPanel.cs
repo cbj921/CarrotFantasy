@@ -70,18 +70,22 @@ public class MainPanel : BasePanel {
 	// 场景切换
 	public void ToNormalModelScene()
 	{
-		mUIFacade.currentScenePanels[StringManager.GameNormalBigLevelPanel].EnterPanel();
+		mUIFacade.currentScenePanels[StringManager.GameLoadPanel].EnterPanel();
 		mUIFacade.ChangeSceneState(new GameNormalOptionSceneState(mUIFacade));
+		// 因为 GameNormalOptionPanel 没有EnterPanel方法，所以无需调用该方法
+		//mUIFacade.currentScenePanels[StringManager.GameNormalOptionPanel].EnterPanel();
 	}
 	public void ToBossModelScene()
 	{
-		mUIFacade.currentScenePanels[StringManager.GameBossOptionPanel].EnterPanel();
+		mUIFacade.currentScenePanels[StringManager.GameLoadPanel].EnterPanel();
 		mUIFacade.ChangeSceneState(new GameBossOptionSceneState(mUIFacade));
+		mUIFacade.currentScenePanels[StringManager.GameBossOptionPanel].EnterPanel();
 	}
 	public void ToMonsterNestScene()
 	{
-		mUIFacade.currentScenePanels[StringManager.MonsterNestPanel].EnterPanel();
+		mUIFacade.currentScenePanels[StringManager.GameLoadPanel].EnterPanel();
 		mUIFacade.ChangeSceneState(new MonsterNestSceneState(mUIFacade));
+		mUIFacade.currentScenePanels[StringManager.MonsterNestPanel].EnterPanel();
 	}
 	// 退出游戏
 	public void ExitGame()

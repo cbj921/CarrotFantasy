@@ -154,4 +154,31 @@ public class UIFacade
         statistics[6] = mPlayManager.destroyPropsNum;
         return statistics;
     }
+
+    // 获得playManager中各关卡的信息
+    // 获得大关卡解锁信息
+    public List<bool> GetUnlockNormalBigLevelList()
+    {
+        return mPlayManager.unlockedNormalBigLevelList;
+    }
+    // 获得小关卡信息
+    public List<Stage> GetUnlockedNormalLevelList()
+    {
+        return mPlayManager.unlockedNormalLevelList;
+    }
+    // 获得解锁的小关卡的数目
+    public List<int> GetUnlockedNormalLevelNum()
+    {
+        return mPlayManager.unlockedNormalLevelNum;
+    }
+    // 获得各大关卡中包含的小关卡总数
+    public List<int> GetNormalLevelTotalNum()
+    {
+        return mPlayManager.normalLevelTotalNum;
+    }
+    // 给GameManager中的currentStage赋值
+    public void PassStageToGameManager(Stage stage)
+    {
+        mGameManager.currentStage = stage;
+    }
 }

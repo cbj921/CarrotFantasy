@@ -2688,6 +2688,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetLimit: 0
   pageText: {fileID: 114706565207177706}
+  isSendMessage: 0
 --- !u!114 &114552136576742128
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3152,6 +3153,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetLimit: 0
   pageText: {fileID: 114240857386194262}
+  isSendMessage: 0
 --- !u!114 &114797950708404114
 MonoBehaviour:
   m_ObjectHideFlags: 1

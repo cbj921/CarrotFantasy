@@ -61,6 +61,7 @@
      <Compile Include="Assets\Scripts\Factory\SpriteFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\UIFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\UIPanelFactory.cs" />
+     <Compile Include="Assets\Scripts\Game\Stage.cs" />
      <Compile Include="Assets\Scripts\Manager\MonoBeheaviourManager\GameController.cs" />
      <Compile Include="Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs" />
      <Compile Include="Assets\Scripts\Manager\NormalManager\AudioSourceManager.cs" />

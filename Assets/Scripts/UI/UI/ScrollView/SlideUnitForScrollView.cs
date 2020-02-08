@@ -25,6 +25,9 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
 
     public float offsetLimit; // 用来改变拖动触发的距离，即灵敏度，默认为0
     public Text pageText;
+    private Vector2 contentStartLength; // content的初始长度
+
+    public bool isSendMessage = true; // 是否向上发送消息
     
     private void Awake() {
         Init();
@@ -46,6 +49,8 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
         currentItemIndex = 1; // 设置当前单元索引为1
         lastProportion = 0;
         scrollRect.horizontalNormalizedPosition = 0; // 设置初始比例为 0 
+
+        contentStartLength = content.sizeDelta; // 获得content的初始长度
     }
     public void ResetScrollView()
     {
@@ -55,6 +60,7 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
             currentItemIndex = 1; // 设置当前单元索引为1
             lastProportion = 0;
             scrollRect.horizontalNormalizedPosition = 0; // 设置初始比例为 0
+            content.sizeDelta = contentStartLength; // 初始化content的长度
             if(pageText != null)
             {
                 pageText.text = currentItemIndex + "/" + totalItemNum;
@@ -80,7 +86,10 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
                 lastProportion += everyItemProportion;
                 if(lastProportion > 1) lastProportion = 1; // 其实这里没必要进行检查，因为不可能出现超过1的情况
                 currentItemIndex++;
-        
+                if(isSendMessage)
+                {
+                    UpdatePanel(true);
+                }
             }
             else
             {
@@ -89,6 +98,10 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
                 lastProportion -= everyItemProportion;
                 if(lastProportion < 0) lastProportion = 0;
                 currentItemIndex--; 
+                if(isSendMessage)
+                {
+                    UpdatePanel(false);
+                }
             }
             //scrollRect.horizontalNormalizedPosition = lastProportion;
             // DOTween的这个TO函数，第一个参数是要改变的值，第二个参数为插值的lambda表达式，第三个为要达到的最终值，第四个为时间
@@ -113,4 +126,68 @@ public class SlideUnitForScrollView : MonoBehaviour,IBeginDragHandler,IEndDragHa
     {
         beginMousePositionX = Input.mousePosition.x;
     }
+
+    // 提供给按钮进行左右滑动的方法
+    public void ToNextPage()
+    {
+        // 右滑
+        if(currentItemIndex >= totalItemNum) return;
+        lastProportion += everyItemProportion;
+        if(lastProportion > 1) lastProportion = 1; // 其实这里没必要进行检查，因为不可能出现超过1的情况
+        currentItemIndex++;
+        DOTween.To(()=>scrollRect.horizontalNormalizedPosition,lerpValue=>scrollRect.horizontalNormalizedPosition = lerpValue,
+                    lastProportion,0.5f).SetEase(Ease.OutQuint);
+        // 更新页面
+        if(pageText != null)
+        {
+            pageText.text = currentItemIndex + "/" + totalItemNum;
+        }
+        if(isSendMessage)
+        {
+            UpdatePanel(true);
+        }
+    } 
+    public void ToLastPage()
+    {
+        // 左滑
+        if(currentItemIndex <= 0) return;
+        lastProportion -= everyItemProportion;
+        if(lastProportion < 0) lastProportion = 0;
+        currentItemIndex--; 
+        DOTween.To(()=>scrollRect.horizontalNormalizedPosition,lerpValue=>scrollRect.horizontalNormalizedPosition = lerpValue,
+                    lastProportion,0.5f).SetEase(Ease.OutQuint);
+        // 更新页面
+        if(pageText != null)
+        {
+            pageText.text = currentItemIndex + "/" + totalItemNum;
+        }
+        if(isSendMessage)
+        {
+            UpdatePanel(false);
+        }
+    }
+
+    // 设置content的length的大小
+    public void SetContentLength(int itemNum)
+    {
+        // 通过content的sizeDelta来设置大小
+        content.sizeDelta = new Vector2(content.sizeDelta.x+(cellLength+spacingX)*(itemNum-1),content.sizeDelta.y);
+        contentLength = content.sizeDelta.x;
+        everyItemProportion = everyItemLength / contentLength; //算出每一个单元的比例，即移动一格的比例
+        totalItemNum = itemNum;
+    }
+
+    // 发送翻页信息的方法
+    public void UpdatePanel(bool toNext)
+    {
+        if(toNext)
+        {
+            gameObject.SendMessageUpwards("ToNextLevel");
+        }
+        else
+        {
+            gameObject.SendMessageUpwards("ToLastLevel");
+        }
+    }
+
 }

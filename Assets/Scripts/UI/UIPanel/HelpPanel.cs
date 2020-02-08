@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.SceneManagement;
 
 public class HelpPanel : BasePanel {
 	private GameObject helpPageGo;
@@ -24,12 +25,18 @@ public class HelpPanel : BasePanel {
 	}
 	public override void InitPanel()
 	{
-		// 面板初始放在屏幕右边
-		transform.localPosition = new Vector3(800,0,0);
 		transform.SetSiblingIndex(5);
 		helpScrollView.ResetScrollView();
 		towerScrollView.ResetScrollView();
 		ShowHelpPage();
+		// 其他处理
+		if(transform.localPosition == Vector3.zero)
+		{
+			gameObject.SetActive(false);
+			helpPanelTween.PlayBackwards();
+		}
+		// 面板初始放在屏幕右边
+		transform.localPosition = new Vector3(800,0,0);
 	}
 	// 显示页面的方法
 	public void ShowHelpPage()
@@ -59,7 +66,18 @@ public class HelpPanel : BasePanel {
 	}
 	public override void ExitPanel()
 	{
-		helpPanelTween.PlayBackwards();
-		mUIFacade.currentScenePanels[StringManager.MainPanel].EnterPanel();
+		// 因为除了主场景，在其他场景也有help界面，所以对不同情况不同处理
+		if(mUIFacade.currentSceneState.GetType() == typeof(MainSceneState))
+		{
+			helpPanelTween.PlayBackwards();
+			mUIFacade.currentScenePanels[StringManager.MainPanel].EnterPanel();
+		}
+		else
+		{
+			// 在冒险模式场景下回到选择关卡界面
+			//mUIFacade.ChangeSceneState(new MainSceneState(mUIFacade));
+			helpPanelTween.PlayBackwards();
+		}
+		
 	}
 }
