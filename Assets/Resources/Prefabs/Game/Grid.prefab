@@ -80,7 +80,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefabs: []
   currentItem: {fileID: 0}
-  actionFlag: 0
 --- !u!212 &212522864218109222
 SpriteRenderer:
   m_ObjectHideFlags: 1

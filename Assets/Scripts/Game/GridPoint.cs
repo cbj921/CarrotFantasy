@@ -56,6 +56,7 @@ public class GridPoint : MonoBehaviour {
 		gridState.hasItem = false;
 		spriteRenderer.enabled = true;
 		gridState.itemID = 0;
+		UpdataGrid(); // 更新完状态后还要更新渲染
 	}
 
 	// 鼠标事件监听
@@ -147,9 +148,25 @@ public class GridPoint : MonoBehaviour {
 		if(gridState.canBulid)
 		{
 			spriteRenderer.enabled = true;
+			spriteRenderer.sprite = gridSprite;
 			if(gridState.hasItem)
 			{
-				CreatItem();
+				if(currentItem == null)
+				{
+					currentItem = CreatItem();
+				}
+				else
+				{
+					Destroy(currentItem);
+					currentItem = CreatItem();
+				}
+			}
+			else
+			{
+				if(currentItem != null)
+				{
+					Destroy(currentItem);
+				}
 			}
 		}
 		else 

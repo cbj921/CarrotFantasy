@@ -41,7 +41,7 @@ public class MapTool : Editor {
 			}
 			if(GUILayout.Button("读取关卡列表"))
 			{
-				LoadLevelFiles();
+				LoadLevelFiles(); 
 			}
 			EditorGUILayout.EndHorizontal();
 

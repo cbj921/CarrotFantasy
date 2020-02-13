@@ -137,6 +137,12 @@ public class MapMaker : MonoBehaviour {
 	// 清除怪物路点
 	public void ClearMonsterPoint()
 	{
+		for(int i=0;i<monsterPathGrids.Count;i++)
+		{
+			int xIndex = monsterPathGrids[i].xIndex;
+			int yIndex = monsterPathGrids[i].yIndex;
+			gridPoints[xIndex,yIndex].InitGrid();
+		}
 		monsterPathGrids.Clear();
 	}
 
