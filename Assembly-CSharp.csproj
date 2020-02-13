@@ -61,6 +61,10 @@
      <Compile Include="Assets\Scripts\Factory\SpriteFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\UIFactory.cs" />
      <Compile Include="Assets\Scripts\Factory\UIPanelFactory.cs" />
+     <Compile Include="Assets\Scripts\Game\GridPoint.cs" />
+     <Compile Include="Assets\Scripts\Game\LevelInfo.cs" />
+     <Compile Include="Assets\Scripts\Game\MapMaker.cs" />
+     <Compile Include="Assets\Scripts\Game\Round.cs" />
      <Compile Include="Assets\Scripts\Game\Stage.cs" />
      <Compile Include="Assets\Scripts\Manager\MonoBeheaviourManager\GameController.cs" />
      <Compile Include="Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs" />
@@ -84,6 +88,9 @@
      <Compile Include="Assets\Scripts\Test\DPMediator.cs" />
      <Compile Include="Assets\Scripts\Test\DPState.cs" />
      <Compile Include="Assets\Scripts\Test\IOP.cs" />
+     <Compile Include="Assets\Scripts\Test\JsonTest\AppInfo.cs" />
+     <Compile Include="Assets\Scripts\Test\JsonTest\JsonTest.cs" />
+     <Compile Include="Assets\Scripts\Test\MouseListen.cs" />
      <Compile Include="Assets\Scripts\Test\ObjectPool.cs" />
      <Compile Include="Assets\Scripts\Test\ScrollViewTest.cs" />
      <Compile Include="Assets\Scripts\Test\Singleton.cs" />
@@ -288,6 +295,9 @@
  </Reference>
  <Reference Include="DOTween50">
  <HintPath>D:/unityProject/CarrotFantasy/Assets/DOTween/DOTween50.dll</HintPath>
+ </Reference>
+ <Reference Include="LitJson">
+ <HintPath>D:/unityProject/CarrotFantasy/Assets/Plugins/LitJson.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Users/陈邦郡/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.13/UnityEngine.Analytics.dll</HintPath>
