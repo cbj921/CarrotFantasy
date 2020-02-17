@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+// 保存至Json文件中的信息类
 public class LevelInfo  {
 
 	public int bigLevelID;

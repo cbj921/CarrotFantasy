@@ -29,6 +29,7 @@ public class GridPoint : MonoBehaviour {
 
 	private void Awake() {
 		spriteRenderer = GetComponent<SpriteRenderer>();
+	#if Tool
 		// 加载sprite资源
 		string spritePath = "Pictures/NormalMordel/Game/";
 		gridSprite = Resources.Load<Sprite>(spritePath+"Grid");
@@ -44,6 +45,7 @@ public class GridPoint : MonoBehaviour {
 				Debug.Log("加载失败，失败路径："+prefabsPath + "item_"+i);
 			}
 		}
+	#endif
 		// 初始化gridState
 		InitGrid();
 	}
@@ -55,10 +57,10 @@ public class GridPoint : MonoBehaviour {
 		gridState.isMonster = false;
 		gridState.hasItem = false;
 		spriteRenderer.enabled = true;
-		gridState.itemID = 0;
+		gridState.itemID = -1;
 		UpdataGrid(); // 更新完状态后还要更新渲染
 	}
-
+#if Tool
 	// 鼠标事件监听
 	private void OnMouseDown() {
 		// 根据不同标志位，进行不同的操作
@@ -85,6 +87,7 @@ public class GridPoint : MonoBehaviour {
 		}
 		else if(MapMaker.Instance.actionFlag == MapMaker.ActionFlag.Item)
 		{
+			gridState.itemID++;
 			// 道具ID索引超出时
 			if(gridState.itemID == itemPrefabs.Length)
 			{
@@ -104,7 +107,6 @@ public class GridPoint : MonoBehaviour {
 				currentItem = CreatItem();
 			}
 			// 点击生成道具模式
-			gridState.itemID++;
 			gridState.hasItem = true;
 		}
 		else if(MapMaker.Instance.actionFlag == MapMaker.ActionFlag.NotClick)
@@ -125,9 +127,9 @@ public class GridPoint : MonoBehaviour {
 			}
 		}
 	}
-
+#endif
 	// 生成当前itemID的道具
-	public GameObject CreatItem()
+	public GameObject CreatItem()   
 	{
 		Vector2 creatPos = transform.position;
 		if(gridState.itemID<=2)
@@ -138,7 +140,15 @@ public class GridPoint : MonoBehaviour {
 		{
 			creatPos += new Vector2(MapMaker.Instance.gridWidth/2,0); 
 		}
+	#if Tool
 		GameObject itemGo = Instantiate(itemPrefabs[gridState.itemID],creatPos,Quaternion.identity);
+	#endif
+	#if Game
+		GameObject itemGo = GameController.Instance.GetGameObjectResource(MapMaker.Instance.bigLevelID+"/Item/item_"+gridState.itemID);
+		itemGo.transform.position = creatPos;
+		itemGo.GetComponent<Item>().gridPoint = this;
+	#endif
+		itemGo.transform.SetParent(GameController.Instance.transform);// 将道具生成在GameController下
 		return itemGo;
 	}
 
@@ -148,7 +158,9 @@ public class GridPoint : MonoBehaviour {
 		if(gridState.canBulid)
 		{
 			spriteRenderer.enabled = true;
+		#if Tool
 			spriteRenderer.sprite = gridSprite;
+		#endif
 			if(gridState.hasItem)
 			{
 				if(currentItem == null)
@@ -174,7 +186,9 @@ public class GridPoint : MonoBehaviour {
 			if(gridState.isMonster)
 			{
 				spriteRenderer.enabled = true;
+			#if Tool
 				spriteRenderer.sprite = monsterPathSprite;
+			#endif
 			}
 			else
 			{

@@ -43,6 +43,10 @@ public class MapMaker : MonoBehaviour {
 	[HideInInspector]
 	public SpriteRenderer roadSR;
 
+	// 萝卜对象
+	[HideInInspector]
+	public Carrot carrot;
+
 	// 切分的行数和列数
 	private int row = 8; // 行数
 	private int column = 12; // 列数
@@ -67,19 +71,28 @@ public class MapMaker : MonoBehaviour {
 
 	private void Awake() {
 		_instance = this;
+#if Tool
 		InitMapMaker();
+#endif
 	}
 
 	// 初始化地图制造者相关变量
 	public void InitMapMaker()
 	{
+		_instance = this; // 如果不加这一句会获取不到MapMaker的单例
 		CalcGirdSize(); // 计算相关参数
 		gridPoints = new GridPoint[row,column];
 		for(int i=0;i<row;i++)
 		{
 			for(int j=0;j<column;j++)
 			{
+			#if Tool
 				GameObject itemGo = Instantiate(gridGo,transform.position,transform.rotation);
+			#endif
+				// 通过工厂拿到itemGo物体
+			#if Game
+				GameObject itemGo = GameController.Instance.GetGameObjectResource("Grid");
+			#endif
 				itemGo.transform.localPosition =new Vector2(-mapWidth/2+j*gridWidth+gridWidth/2,-mapHeight/2+i*gridHeight+gridHeight/2);
 				itemGo.transform.SetParent(transform);
 				gridPoints[i,j] = itemGo.GetComponent<GridPoint>();
@@ -90,6 +103,33 @@ public class MapMaker : MonoBehaviour {
 		bgSR = transform.Find("BG").GetComponent<SpriteRenderer>();
 		roadSR = transform.Find("Road").GetComponent<SpriteRenderer>();
 	}
+
+#if Game
+	// 加载地图
+	public void LoadMap(int bigLevelIDD,int levelIDD)
+	{
+		bigLevelID = bigLevelIDD;
+		levelID = levelIDD;
+		LevelInfo levelInfo = LoadLevelInfoByJson("level_"+bigLevelID+"_"+levelID+".json");
+		LoadLevelData(levelInfo);
+		// 获得怪物路点的坐标值
+		monsterPathPos = new List<Vector2>();
+		for(int i=0;i<monsterPathGrids.Count;i++)
+		{
+			GridPoint tempPoint = gridPoints[monsterPathGrids[i].xIndex,monsterPathGrids[i].yIndex];
+			monsterPathPos.Add(tempPoint.transform.position);
+		}
+		// 设置怪物路径的起始点和终止点
+		GameObject startPointGo = GameController.Instance.GetGameObjectResource("startPoint");
+		startPointGo.transform.position = monsterPathPos[0];
+		startPointGo.transform.SetParent(transform);
+		GameObject endPointGo = GameController.Instance.GetGameObjectResource("Carrot");
+		endPointGo.transform.position = monsterPathPos[monsterPathPos.Count-1];
+		endPointGo.transform.SetParent(transform);
+		// 获得carrot脚本
+		carrot = endPointGo.GetComponent<Carrot>();
+	}
+#endif
 
 	// 计算地图格子的宽高
 	private void CalcGirdSize()
@@ -107,6 +147,7 @@ public class MapMaker : MonoBehaviour {
 		gridHeight = mapHeight / row;
 	}
 
+#if Tool
 	// 画格子用于辅助设计
 	private void OnDrawGizmos() 
 	{
@@ -131,7 +172,7 @@ public class MapMaker : MonoBehaviour {
 			}
 		}
 	}
-
+#endif
 	// 有关地图编辑的方法
 
 	// 清除怪物路点
@@ -266,4 +307,13 @@ public class MapMaker : MonoBehaviour {
 		roadSR.sprite = Resources.Load<Sprite>("Pictures/NormalMordel/Game/"+bigLevelID+"/Road"+levelID);
 
 	}
+
+	#if Tool
+	public void SetMapBgAndRoad()
+	{
+		// 加载BG和Road图片资源
+		bgSR.sprite = Resources.Load<Sprite>("Pictures/NormalMordel/Game/"+bigLevelID+"/BG"+(levelID/3));// 前三关用BG0，后两关用BG1
+		roadSR.sprite = Resources.Load<Sprite>("Pictures/NormalMordel/Game/"+bigLevelID+"/Road"+levelID);
+	}
+	#endif
 }

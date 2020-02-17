@@ -2,7 +2,7 @@
  * @Author: your name
  * @Date: 2019-12-05 16:03:23
  * @LastEditTime : 2020-02-05 22:47:30
- * @LastEditors  : Please set LastEditors
+ * @LastEditors: Please set LastEditors
  * @Description: 该脚本是游戏负责全局控制的脚本
  * @FilePath: \CarrotFantasy\Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs
  */

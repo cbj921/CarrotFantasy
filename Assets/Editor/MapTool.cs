@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEditor;
 using System.IO;
 
+#if Tool
 // 编辑器拓展
 [CustomEditor(typeof(MapMaker))]
 public class MapTool : Editor {
@@ -56,6 +57,14 @@ public class MapTool : Editor {
 			}
 			EditorGUILayout.EndHorizontal();
 
+			EditorGUILayout.BeginHorizontal();
+			if(GUILayout.Button("更新当前地图背景和道路"))
+			{
+				mapMaker.SetMapBgAndRoad();
+				mapMaker.RecoverTowerPoint();
+			}
+			EditorGUILayout.EndHorizontal();
+
 			if(GUILayout.Button("保存当前关卡数据"))
 			{
 				mapMaker.SaveFileByJson();
@@ -101,3 +110,4 @@ public class MapTool : Editor {
 		return fileName.ToArray();
 	}
 }	
+#endif
