@@ -173,7 +173,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561403257
 GameObject:
@@ -204,7 +204,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mMonsterIDList: 
+  monsterAnimator: []
+  killMonsterNum: 0
+  killMonsterTotalNum: 0
+  clearItemNum: 0
   mMonsterIDIndex: 0
+  carrotHP: 10
+  coin: 500
+  gameSpeed: 0
+  isPause: 0
+  targetTrans: {fileID: 0}
+  targetSingel: {fileID: 0}
+  selectPoint: {fileID: 0}
+  isCreatMonster: 0
+  gameOver: 0
+  towerListGo: {fileID: 0}
+  handleTowerCanvasGo: {fileID: 0}
 --- !u!4 &561403259
 Transform:
   m_ObjectHideFlags: 0
@@ -218,7 +233,7 @@ Transform:
   - {fileID: 735640964}
   - {fileID: 842691169}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &561403260
 MonoBehaviour:
@@ -472,7 +487,7 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!1001 &1253446163
+--- !u!1001 &1709233282
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -509,7 +524,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4262674362092600, guid: 9cb58708881a53749a2af72660c759b2, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9cb58708881a53749a2af72660c759b2, type: 2}

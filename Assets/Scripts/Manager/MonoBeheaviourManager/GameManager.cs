@@ -1,7 +1,7 @@
 ﻿/*
  * @Author: your name
  * @Date: 2019-12-05 16:03:23
- * @LastEditTime : 2020-02-05 22:47:30
+ * @LastEditTime: 2020-02-23 22:14:09
  * @LastEditors: Please set LastEditors
  * @Description: 该脚本是游戏负责全局控制的脚本
  * @FilePath: \CarrotFantasy\Assets\Scripts\Manager\MonoBeheaviourManager\GameManager.cs
@@ -33,8 +33,8 @@ public class GameManager : MonoBehaviour {
 		playerManager = new PlayerManager();
 		factoryManager = new FactoryManager();
 		audioSourceManager = new AudioSourceManager();
-		uiManager = new UIManager();
-		uiManager.mUIFacade.currentSceneState.EnterScene();
+		// uiManager = new UIManager(); //因为测试注销
+		// uiManager.mUIFacade.currentSceneState.EnterScene(); //因为测试注销
 	}
 
 	// 因为在工厂的脚本中，没有继承MonoBehaviour,所以无法使用Instantiate来实例化

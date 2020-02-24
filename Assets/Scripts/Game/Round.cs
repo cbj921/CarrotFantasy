@@ -35,7 +35,10 @@ public class Round {
 		}
 		else 
 		{
-			// TODO:产生怪物
+			// 将怪物信息数组赋值给GameController中
+			GameController.Instance.mMonsterIDList = roundInfo.mMonsterIDList;
+			// 产生怪物
+			GameController.Instance.CreatMonster();
 		}
 	}
 
